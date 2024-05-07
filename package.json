@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sarthikbhat/bitespeed-identity.git"
+    "url": "git+https://github.com/sarthikbhat/bitespeed-identity-reconciliation.git"
   },
   "author": "Sarthik Bhat",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sarthikbhat/bitespeed-identity/issues"
+    "url": "https://github.com/sarthikbhat/bitespeed-identity-reconciliation/issues"
   },
   "homepage": "https://bitespeed-identity-reconciliation-8bw9.onrender.com",
   "devDependencies": {
