@@ -1,0 +1,19 @@
+{
+  "name": "bitespeed-identity",
+  "version": "1.0.0",
+  "description": "Assignment for bitespeed backend developer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarthikbhat/bitespeed-identity.git"
+  },
+  "author": "Sarthik Bhat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarthikbhat/bitespeed-identity/issues"
+  },
+  "homepage": "https://github.com/sarthikbhat/bitespeed-identity#readme"
+}
