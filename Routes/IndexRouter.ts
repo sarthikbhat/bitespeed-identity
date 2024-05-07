@@ -1,7 +1,7 @@
 import {
   identityController,
   indexController,
-} from "Controllers/IdentityController";
+} from "../Controllers/IdentityController";
 import express, { Express } from "express";
 
 const routes: Express = express();

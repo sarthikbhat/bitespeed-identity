@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/sarthikbhat/bitespeed-identity/issues"
   },
-  "homepage": "https://github.com/sarthikbhat/bitespeed-identity#readme",
+  "homepage": "https://bitespeed-identity-reconciliation-8bw9.onrender.com",
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.10",
