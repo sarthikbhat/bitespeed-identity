@@ -9,10 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.identityController = exports.indexController = void 0;
-const indexController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send("Server is Up");
+exports.identityController = void 0;
+const IdentityService_1 = require("../Services/IdentityService");
+const identityController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let response;
+        const body = req.body;
+        const resp = yield (0, IdentityService_1.getContact)(body);
+        res.json(resp);
+    }
+    catch (error) {
+        console.log(error);
+    }
 });
-exports.indexController = indexController;
-const identityController = (req, res) => __awaiter(void 0, void 0, void 0, function* () { });
 exports.identityController = identityController;

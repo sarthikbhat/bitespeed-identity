@@ -1,5 +1,5 @@
 {
-  "name": "bitespeed-identity",
+  "name": "bitespeed-identity-reconciliation",
   "version": "1.0.0",
   "description": "Assignment for bitespeed backend developer",
   "main": "build/index.js",
@@ -19,14 +19,19 @@
   },
   "homepage": "https://bitespeed-identity-reconciliation-8bw9.onrender.com",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.10",
     "concurrently": "^8.2.2",
     "nodemon": "^3.1.0",
+    "prisma": "^5.13.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@prisma/client": "^5.13.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2"
   }

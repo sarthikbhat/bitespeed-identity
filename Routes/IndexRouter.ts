@@ -1,12 +1,8 @@
-import {
-  identityController,
-  indexController,
-} from "../Controllers/IdentityController";
+import { identityController } from "../Controllers/IdentityController";
 import express, { Express } from "express";
 
 const routes: Express = express();
 
-routes.use("/", indexController);
-routes.use("/identity", identityController);
+routes.use("/identify", identityController);
 
 export default routes;

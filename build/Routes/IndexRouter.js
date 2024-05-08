@@ -6,6 +6,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const IdentityController_1 = require("../Controllers/IdentityController");
 const express_1 = __importDefault(require("express"));
 const routes = (0, express_1.default)();
-routes.use("/", IdentityController_1.indexController);
-routes.use("/identity", IdentityController_1.identityController);
+routes.use("/identify", IdentityController_1.identityController);
 exports.default = routes;
