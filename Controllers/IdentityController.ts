@@ -3,6 +3,11 @@ import prisma from "../prisma/Prisma";
 import { IRequestBody, IResponse } from "../Types/Types";
 import { getContact } from "../Services/IdentityService";
 
+/**
+ * Controller Function to identify the contacts and send response
+ * @param req 
+ * @param res 
+ */
 export const identityController = async (req: Request, res: Response) => {
   try {
     let response: IResponse;

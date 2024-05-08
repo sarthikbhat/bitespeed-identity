@@ -11,6 +11,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.identityController = void 0;
 const IdentityService_1 = require("../Services/IdentityService");
+/**
+ * Controller Function to identify the contacts and send response
+ * @param req
+ * @param res
+ */
 const identityController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let response;
