@@ -3,7 +3,6 @@ import express, { Express } from "express";
 
 const routes: Express = express();
 
-routes.use("/identify", identityController);
-routes.use("/identify", identityController);
+routes.post("/identify", identityController);
 
 export default routes;

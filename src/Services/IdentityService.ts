@@ -20,13 +20,20 @@ export const getContact = async (data: IRequestBody): Promise<ConsolidatedContac
       const contactsToBeSaved: any = [];
       const primary = findContactsInDB[0];
 
-      if (findContactsInDB.length == 1) {
-        const newContact = await checkIfUniqueAndCreate(primary, data);
-        if (newContact) contacts.push(newContact);
-      }
+      // if (findContactsInDB.length == 1) {
+      //   const newContact = await checkIfUniqueAndCreate([primary], data);
+      //   if (newContact) contacts.push(newContact);
+      // }
 
       findContactsInDB.forEach(async (contact: contact, index: number) => {
-        if (index === 0) return;
+        if (index === 0) {
+          if (contact.linkPrecedence === LinkPrecedence.secondary) {
+            contact.linkPrecedence = LinkPrecedence.primary;
+            contact.linkedId = null;
+            contactsToBeSaved.push(prisma.contact.update({ where: { id: contact.id }, data: contact }));
+            return;
+          } else return;
+        }
         if (contact.linkPrecedence === LinkPrecedence.primary) {
           contact.linkPrecedence = LinkPrecedence.secondary;
           contact.linkedId = primary.id;
@@ -36,7 +43,9 @@ export const getContact = async (data: IRequestBody): Promise<ConsolidatedContac
       });
 
       await updateOneOrMany(contactsToBeSaved);
-      contacts = [...findContactsInDB, ...contacts];
+      contacts.push(...findContactsInDB);
+      const newContact = await checkIfUniqueAndCreate([...findContactsInDB], data);
+      if (newContact) contacts.push(newContact);
     } else {
       const savedData = await save(data);
       contacts.push(savedData);
@@ -82,9 +91,9 @@ const updateOneOrMany = async (contacts: any): Promise<any[]> => {
  * @param contact
  * @param data
  */
-const checkIfUniqueAndCreate = async (contact: contact, data: IRequestBody): Promise<contact | null> => {
-  if (contact.email !== data.email || contact.phoneNumber !== data.phoneNumber) {
-    const linkedId = contact.linkPrecedence === LinkPrecedence.secondary ? contact.linkedId : contact.id;
+const checkIfUniqueAndCreate = async (contact: contact[], data: IRequestBody): Promise<contact | null> => {
+  if (!existsInformation(contact, data)) {
+    const linkedId = contact[0].linkPrecedence === LinkPrecedence.secondary ? contact[0].linkedId : contact[0].id;
     const newRecord = await save({
       email: data.email,
       phoneNumber: data.phoneNumber,
@@ -93,6 +102,19 @@ const checkIfUniqueAndCreate = async (contact: contact, data: IRequestBody): Pro
     });
     return newRecord;
   } else return null;
+};
+
+/**
+ * Check if information is present, then return true / false
+ * @param contact
+ * @param data
+ */
+const existsInformation = (contacts: contact[], data: IRequestBody): boolean => {
+  const phone = contacts.findIndex((elm: contact) => elm.phoneNumber === data.phoneNumber);
+  if (phone === -1) return false;
+  const email = contacts.findIndex((elm: contact) => elm.email === data.email);
+  if (email === -1) return false;
+  return true;
 };
 
 /**
