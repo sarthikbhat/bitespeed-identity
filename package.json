@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+    "dev": "nodemon --watch src/**/*.ts --exec ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -17,12 +17,14 @@
   "bugs": {
     "url": "https://github.com/sarthikbhat/bitespeed-identity-reconciliation/issues"
   },
-  "homepage": "https://bitespeed-identity-reconciliation-8bw9.onrender.com",
+  "homepage": "https://bitespeed-identity-reconciliation-8bw9.onrender.com/identify",
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.10",
+    "chai": "^5.1.1",
     "concurrently": "^8.2.2",
+    "mocha": "^10.4.0",
     "nodemon": "^3.1.0",
     "prisma": "^5.13.0",
     "ts-node": "^10.9.2",

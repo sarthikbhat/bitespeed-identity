@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "target": "es2016",
     "module": "commonjs",
     "esModuleInterop": true,
@@ -8,6 +9,6 @@
     "skipLibCheck": true,
     "outDir": "./build"
   },
-  "include": ["**/*.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }
